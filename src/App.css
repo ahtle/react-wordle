@@ -1,0 +1,7 @@
+#App > header {
+    text-align: center;    
+    border-bottom: 1px solid lightgrey;
+}
+#App > .main-content {
+    padding: 1rem;
+}
