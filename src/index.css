@@ -11,3 +11,72 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.row {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+.row > div {
+  width: 60px;
+  height: 60px;
+  border: 1px solid grey;
+  margin: 4px;
+  text-align: center;
+  line-height: 60px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 2.5rem;
+}
+
+.row.past > div {
+  animation: flip 0.5s linear;
+  background-color: gray;
+  color: #fff;
+}
+.row > div.green {
+  background-color: green;
+  color: #fff;
+  animation: flip 0.5s linear;
+}
+.row > div.green {
+  background-color: green;
+  color: #fff;
+  animation: flip 0.5s linear;
+}
+.row > div.yellow {
+  background-color: yellow;
+  animation: flip 0.5s linear;
+}
+
+.row > div:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.row > div:nth-child(3) {
+  animation-delay: 0.4s;
+}
+.row > div:nth-child(4) {
+  animation-delay: 0.6s;
+}
+.row > div:nth-child(5) {
+  animation-delay: 0.8s;
+}
+
+/* animations */
+@keyframes flip {
+  0% {
+    transform: rotateX(0);
+    background-color: #fff;
+  }
+  45% {
+    transform: rotateX(90deg);
+    background-color: #fff;
+  }
+  55% {
+    transform: rotateX(90deg);
+    background-color: #fff;
+  }
+  100% {
+    transform: rotateX(0);
+  }
+}

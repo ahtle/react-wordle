@@ -49,17 +49,25 @@ const useWorlde = (solution) => {
   };
 
   const handleKeyup = ({ key }) => {
+    if (isCorrect) return;
+
     if (/^[A-Za-z]$/.test(key)) {
       if (currentGuess.length < 5) {
         setCurrentGuess((prev) => {
           return prev + key;
         });
       }
-    } else if (key === 'Backspace') {
+      return;
+    }
+
+    if (key === 'Backspace') {
       setCurrentGuess((prev) => {
         return prev.slice(0, -1);
       });
-    } else if (key === 'Enter') {
+      return;
+    }
+
+    if (key === 'Enter') {
       if (turn > 5) {
         console.log('You used all your guesses');
       } else if (history.includes(currentGuess)) {

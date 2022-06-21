@@ -1,11 +1,20 @@
-import { useEffect } from 'react';
-import useWorlde from '../hooks/useWordle';
+import { useEffect, useState } from 'react';
+import useWorlde from '../hooks/use-wordle';
+import TestContext from '../contexts/testContext';
 import Grid from './Grid';
 import './Wordle.css';
 
 export default function Wordle({ solution }) {
   const { currentGuess, guesses, isCorrect, turn, handleKeyup } =
     useWorlde(solution);
+
+  const [count, setCount] = useState({ count: 0 });
+
+  const incrementCount = () => {
+    setCount((prev) => {
+      return { count: prev.count + 1 };
+    });
+  };
 
   useEffect(() => {
     window.addEventListener('keyup', handleKeyup);
@@ -20,11 +29,15 @@ export default function Wordle({ solution }) {
     <div id="Wordle">
       <div>
         <p>solution - {solution}</p>
-        <Grid
-          currentGuess={currentGuess}
-          guesses={guesses}
-          turn={turn}
-        />
+
+        <TestContext.Provider value={count}>
+          <Grid
+            currentGuess={currentGuess}
+            guesses={guesses}
+            incrementCount={incrementCount}
+            turn={turn}
+          />
+        </TestContext.Provider>
       </div>
     </div>
   );
