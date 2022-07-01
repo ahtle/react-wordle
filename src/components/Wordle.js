@@ -5,7 +5,7 @@ import Grid from './Grid';
 import './Wordle.css';
 
 export default function Wordle({ solution }) {
-  const { currentGuess, guesses, isCorrect, turn, handleKeyup } =
+  const { currentGuess, guesses, turn, handleKeyup } =
     useWorlde(solution);
 
   const [count, setCount] = useState({ count: 0 });
@@ -20,10 +20,6 @@ export default function Wordle({ solution }) {
     window.addEventListener('keyup', handleKeyup);
     return () => window.removeEventListener('keyup', handleKeyup);
   }, [handleKeyup]);
-
-  useEffect(() => {
-    console.log(guesses, turn, isCorrect);
-  }, [guesses, turn, isCorrect]);
 
   return (
     <div id="Wordle">
